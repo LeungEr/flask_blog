@@ -81,14 +81,6 @@ def deploy():
 def initdata():
     """ cretat a new data"""
     db.create_all()
-    admin_role = Role(name='Administrator')
-    mod_role = Role(name='Moderator')
-    user_role = Role(name='User')
-    user_john = User(username='john', role=admin_role, confirmed=True, email='xxxxxx@qq.com', password='cat')
-    user_susan = User(username='susan', role=user_role, confirmed=True, email='xxxxx@qq.com', password='cat')
-    user_david = User(username='david', role=user_role, confirmed=True, email='xxxxxx@qq.com', password='cat')
-    db.session.add_all([admin_role, mod_role, user_role, user_john, user_susan, user_david])
-    db.session.commit()
     Role.insert_roles()
     User.add_self_follows()
 
